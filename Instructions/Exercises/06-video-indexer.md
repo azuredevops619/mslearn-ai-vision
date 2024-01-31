@@ -92,39 +92,3 @@ The Video Analyzer portal is a useful interface to manage video indexing project
 9. Experiment with the widgets, using the **Insights** widget to search for insights and jump to them in the video.
 
 ![Video Analyzer widgets in a web page](../media/video-indexer-widgets.png)
-
-## Use the Video Analyzer REST API
-
-Video Analyzer provides a REST API that you can use to upload and manage videos in your account.
-
-### Get your API details
-
-To use the Video Analyzer API, you need some information to authenticate requests:
-
-1. In the Video Analyzer portal, expand the left pane and select the **Account settings** page.
-2. Note the **Account ID** on this page - you will need it later.
-3. Open a new browser tab and go to the Video Analyzer developer portal at `https://api-portal.videoindexer.ai`, signing in using the credentials for your Video Analyzer account.
-4. On the **Profile** page, view the **Subscriptions** associated with your profile.
-5. On the page with your subscription(s), observe that you have been assigned two keys (primary and secondary) for each subscription. Then select **Show** for any of the keys to see it. You will need this key shortly.
-
-### Use the REST API
-
-Now that you have the account ID and an API key, you can use the REST API to work with videos in your account. In this procedure, you'll use a PowerShell script to make REST calls; but the same principles apply with HTTP utilities such as cURL or Postman, or any programming language capable of sending and receiving JSON over HTTP.
-
-All interactions with the Video Analyzer REST API follow the same pattern:
-
-- An initial request to the **AccessToken** method with the API key in the header is used to obtain an access token.
-- Subsequent requests use the access token to authenticate when calling REST methods to work with videos.
-
-1. In Visual Studio Code, in the **06-video-indexer** folder, open **get-videos.ps1**.
-2. In the PowerShell script, replace the **YOUR_ACCOUNT_ID** and **YOUR_API_KEY** placeholders with the account ID and API key values you identified previously.
-3. Observe that the *location* for a free account is "trial". If you have created an unrestricted Video Analyzer account (with an associated Azure resource), you can change this to the location where your Azure resource is provisioned (for example "eastus").
-4. Review the code in the script, noting that invokes two REST methods: one to get an access token, and another to list the videos in your account.
-5. Save your changes, and then at the top-right of the script pane, use the **&#9655;** button to run the script.
-6. View the JSON response from the REST service, which should contain details of the **Responsible AI** video you indexed previously.
-
-## More information
-
-Recognition of people and celebrities is still available, but following the [Responsible AI Standard](https://aka.ms/aah91ff) those are restricted behind a Limited Access policy. These features include facial identification and celebrity recognition. To learn more and apply for access, see the [Limited Access for Azure AI Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-limited-access).
-
-For more information about **Video Analyzer**, see the [Video Analyzer documentation](https://docs.microsoft.com/azure/azure-video-analyzer/video-analyzer-for-media-docs/).
